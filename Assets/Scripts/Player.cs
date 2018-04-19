@@ -14,11 +14,36 @@ public class Player : MonoBehaviour
     void Start ()
     {
         _controller = GetComponent<CharacterController>();
+        // Hide mouse cursor
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        // If left click
+        // Case ray from center point of main camera
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray rayOrgions = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(rayOrgions, out hitInfo))
+            {
+                Debug.Log(message: "RayCast Hit: " + hitInfo.transform.name);
+            }
+        }
+
+        // If Escape key pressed
+        // Unhide mouse cursor
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         CalculateMovement();
     }
 

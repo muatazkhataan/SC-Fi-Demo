@@ -1279,6 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908391642308592}
   - component: {fileID: 95690548529536300}
+  - component: {fileID: 65304247082218840}
   m_Layer: 8
   m_Name: Sharkman
   m_TagString: Untagged
@@ -13300,7 +13301,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1141142929732150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.08, y: 2.81, z: -1.55}
+  m_LocalPosition: {x: 9.08, y: 3.4, z: -1.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144817655515888}
@@ -13366,7 +13367,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1887651944021680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.66, y: 3.33, z: 10.92}
+  m_LocalPosition: {x: 10.66, y: 4.22, z: 10.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144817655515888}
@@ -13503,7 +13504,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1606463651509276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 1.935, z: -1.72}
+  m_LocalPosition: {x: -0.22, y: 1.73, z: -1.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144817655515888}
@@ -18318,6 +18319,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300008, guid: e582ad25494856c48a62bb7a4e4b4143, type: 3}
+--- !u!65 &65304247082218840
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1174503903678904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.690508, z: 1}
+  m_Center: {x: 0, y: 0.84525394, z: 0}
 --- !u!95 &95053310121915558
 Animator:
   serializedVersion: 3
@@ -18569,7 +18582,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.366, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7411765, g: 0.95294124, b: 1, a: 1}
   m_Intensity: 2
   m_Range: 5
   m_SpotAngle: 30
@@ -18641,7 +18654,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.53676474, b: 0.53676474, a: 1}
+  m_Color: {r: 0.9921569, g: 0.86666673, b: 0.7058824, a: 1}
   m_Intensity: 1
   m_Range: 5
   m_SpotAngle: 30
@@ -18713,7 +18726,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 0.384, a: 1}
+  m_Color: {r: 0.28235295, g: 0.8862746, b: 0.7686275, a: 1}
   m_Intensity: 2
   m_Range: 4
   m_SpotAngle: 30
