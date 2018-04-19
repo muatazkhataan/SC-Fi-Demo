@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC-Fi-Demo", "SC-Fi-Demo.csproj", "{2D8469D1-5F18-7D00-F1E7-8A1A7601D6B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC-Fi-Demo.Editor", "SC-Fi-Demo.Editor.csproj", "{95BD70E8-0AFB-7C1A-4A26-0F91A1A12889}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D8469D1-5F18-7D00-F1E7-8A1A7601D6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8469D1-5F18-7D00-F1E7-8A1A7601D6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8469D1-5F18-7D00-F1E7-8A1A7601D6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8469D1-5F18-7D00-F1E7-8A1A7601D6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BD70E8-0AFB-7C1A-4A26-0F91A1A12889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BD70E8-0AFB-7C1A-4A26-0F91A1A12889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BD70E8-0AFB-7C1A-4A26-0F91A1A12889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BD70E8-0AFB-7C1A-4A26-0F91A1A12889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
