@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     private CharacterController _controller;
     [SerializeField]
     private float _speed = 3.5f;
     private float _gravity = 9.81f;
-
+    [SerializeField]
+    private GameObject _muzzleFlash;
+    [SerializeField]
+    private GameObject _hitMarkerPrefab;
+    [SerializeField]
+    private AudioSource _weaponAudio;
     // Use this for initialization
     void Start ()
     {
@@ -25,15 +29,30 @@ public class Player : MonoBehaviour
         // If left click
         // Case ray from center point of main camera
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
+            _muzzleFlash.SetActive(true);
+            // if audio not playing 
+            // play audio
+            if (_weaponAudio.isPlaying == false)
+            {
+                _weaponAudio.Play();
+
+            }
             Ray rayOrgions = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hitInfo;
 
             if (Physics.Raycast(rayOrgions, out hitInfo))
             {
                 Debug.Log(message: "RayCast Hit: " + hitInfo.transform.name);
+                GameObject hitMarker = Instantiate(_hitMarkerPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)) as GameObject;
+                Destroy(hitMarker, 1f);
             }
+        }
+        else
+        {
+            _muzzleFlash.SetActive(false);
+            _weaponAudio.Stop();
         }
 
         // If Escape key pressed

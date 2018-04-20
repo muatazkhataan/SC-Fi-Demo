@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scene1.unity
+- path: Assets/_Scenes/Game SC-Fi Demo.unity
   isLoaded: 1
   isActive: 1
