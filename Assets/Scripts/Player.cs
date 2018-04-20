@@ -14,6 +14,18 @@ public class Player : MonoBehaviour
     private GameObject _hitMarkerPrefab;
     [SerializeField]
     private AudioSource _weaponAudio;
+
+    [SerializeField]
+    private int currentAmmo;
+    private int maxAmmo = 50;
+
+    private bool _isReloading = false;
+
+    private UIManager _uiManager;
+
+    // Variable for has Coin
+    public bool hasCoin = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -21,6 +33,10 @@ public class Player : MonoBehaviour
         // Hide mouse cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentAmmo = maxAmmo;
+
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 	}
 	
 	// Update is called once per frame
@@ -29,30 +45,20 @@ public class Player : MonoBehaviour
         // If left click
         // Case ray from center point of main camera
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && currentAmmo > 0)
         {
-            _muzzleFlash.SetActive(true);
-            // if audio not playing 
-            // play audio
-            if (_weaponAudio.isPlaying == false)
-            {
-                _weaponAudio.Play();
-
-            }
-            Ray rayOrgions = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(rayOrgions, out hitInfo))
-            {
-                Debug.Log(message: "RayCast Hit: " + hitInfo.transform.name);
-                GameObject hitMarker = Instantiate(_hitMarkerPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)) as GameObject;
-                Destroy(hitMarker, 1f);
-            }
+            Shoot();
         }
         else
         {
             _muzzleFlash.SetActive(false);
             _weaponAudio.Stop();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && _isReloading == false)
+        {
+            _isReloading = true;
+            StartCoroutine(Reload());
         }
 
         // If Escape key pressed
@@ -66,6 +72,29 @@ public class Player : MonoBehaviour
         CalculateMovement();
     }
 
+    void Shoot()
+    {
+        _muzzleFlash.SetActive(true);
+        currentAmmo--;
+        _uiManager.UpdateAmmo(currentAmmo);
+        // if audio not playing 
+        // play audio
+        if (_weaponAudio.isPlaying == false)
+        {
+            _weaponAudio.Play();
+
+        }
+        Ray rayOrgions = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(rayOrgions, out hitInfo))
+        {
+            Debug.Log(message: "RayCast Hit: " + hitInfo.transform.name);
+            GameObject hitMarker = Instantiate(_hitMarkerPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)) as GameObject;
+            Destroy(hitMarker, 1f);
+        }
+
+    }
     void CalculateMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -76,5 +105,13 @@ public class Player : MonoBehaviour
 
         velocity = transform.transform.TransformDirection(velocity);
         _controller.Move(velocity * Time.deltaTime);
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(1.5f);
+        currentAmmo = maxAmmo;
+        _uiManager.UpdateAmmo(currentAmmo);
+        _isReloading = false;
     }
 }
