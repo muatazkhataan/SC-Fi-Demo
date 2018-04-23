@@ -27,6 +27,7 @@ public class SharkShop : MonoBehaviour {
                     // Play win sound
                     AudioSource audio = GetComponent<AudioSource>();
                     audio.Play();
+                    player.EnableWeapons();
                 }
                 // Debug Get out of here! You do not have coin
                 else

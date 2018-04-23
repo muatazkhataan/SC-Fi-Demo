@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     // Variable for has Coin
     public bool hasCoin = false;
 
+    // Variable for has Weapon
+    [SerializeField]
+    private GameObject _weapon;
+
     // Use this for initialization
     void Start ()
     {
@@ -92,6 +96,14 @@ public class Player : MonoBehaviour
             Debug.Log(message: "RayCast Hit: " + hitInfo.transform.name);
             GameObject hitMarker = Instantiate(_hitMarkerPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal)) as GameObject;
             Destroy(hitMarker, 1f);
+
+            // check if we hit the crate
+            Destructable crate = hitInfo.transform.GetComponent<Destructable>();
+            if(crate != null)
+            {
+                crate.DestroyCrate();
+            }
+            // Destroy Crate
         }
 
     }
@@ -113,5 +125,10 @@ public class Player : MonoBehaviour
         currentAmmo = maxAmmo;
         _uiManager.UpdateAmmo(currentAmmo);
         _isReloading = false;
+    }
+
+    public void EnableWeapons()
+    {
+        _weapon.SetActive(true);
     }
 }
