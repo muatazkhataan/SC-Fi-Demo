@@ -55,7 +55,15 @@ public class Player : MonoBehaviour
             _weaponAudio.Stop();
         }
 
+        // Reload by Key R
         if (Input.GetKeyDown(KeyCode.R) && _isReloading == false)
+        {
+            _isReloading = true;
+            StartCoroutine(Reload());
+        }
+
+        // Reload by Mouse
+        if (Input.GetMouseButton(1) && _isReloading == false)
         {
             _isReloading = true;
             StartCoroutine(Reload());
